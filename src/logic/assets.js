@@ -34,6 +34,7 @@ module.exports = class extends think.Logic {
       "factory_name",
       "serial_no",
       "place",
+      "type",
     ]);
     if (err) {
       return this.fail(err, {});
@@ -66,5 +67,79 @@ module.exports = class extends think.Logic {
         }
       }
     }
+  }
+
+  updateAssetsAction(){
+    this.allowMethods = 'post';
+    let err = util.checkPost(this, [
+      "assets_id"
+    ]);
+    if (err) {
+      return this.fail(err, {});
+    }
+  }
+
+  deleteAssetsAction(){
+    this.allowMethods = 'post';
+    let err = util.checkPost(this, [
+      "assets_ids"
+    ]);
+    if (err) {
+      return this.fail(err, {});
+    }
+  }
+
+  allotAssetsAction(){
+    this.allowMethods = 'post';
+    let err = util.checkPost(this, [
+      "assets_id",
+      "own_user_name",
+      "own_user_id",
+    ]);
+    if (err) {
+      return this.fail(err, {});
+    }
+  }
+
+  getAssetsTypeAction(){
+    this.allowMethods = 'get';
+  }
+
+  addAssetsTypeAction(){
+    this.allowMethods = 'post';
+    let err = util.checkPost(this, [
+      "type_name"
+    ]);
+    if (err) {
+      return this.fail(err, {});
+    }
+  }
+
+  getAssetsStatusAction(){
+    this.allowMethods = 'get';
+  }
+
+  addAssetsStatusAction(){
+    this.allowMethods = 'post';
+    let err = util.checkPost(this, [
+      "status_name"
+    ]);
+    if (err) {
+      return this.fail(err, {});
+    }
+  }
+
+  getUserAssetsAction(){
+    this.allowMethods = 'get';
+    let err = util.checkGet(this, [
+      "own_id",
+    ]);
+    if (err) {
+      return this.fail(err, {});
+    }
+  }
+
+  getStatusCountAction(){
+    this.allowMethods = 'get';
   }
 };
